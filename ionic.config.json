@@ -1,0 +1,7 @@
+{
+  "name": "calendar-app-m12",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
