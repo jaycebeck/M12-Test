@@ -5,6 +5,7 @@ import AddToDoButton from '../components/AddToDo';
 import { add } from "ionicons/icons";
 import Header from "../components/Header";
 import CreateToDo from "./CreateToDo";
+import Footer from "../components/Footer";
 
 
 function ToDos() {
@@ -56,19 +57,10 @@ function ToDos() {
       description: 'If you are looking for a great island to visit in 2022, here are 10 of the best.'
     }
   ];
-  const addToDo = () => {
-    return <CreateToDo />;
-  };
 
   return (
     <IonPage>
       <Header />
-      <IonFab slot='fixed' vertical="bottom" horizontal="end">
-        <IonFabButton size='small' onClick={addToDo}>
-          <IonIcon icon={add} />
-          <IonRouterLink href="../create-todo" />
-        </IonFabButton>
-      </IonFab>
       <IonList className="list-margin">
         {posts.map((post) => (
           <IonItem
@@ -85,6 +77,8 @@ function ToDos() {
           </IonItem>
         ))}
       </IonList>
+      <AddToDoButton />
+      <Footer />
     </IonPage>
   );
 }

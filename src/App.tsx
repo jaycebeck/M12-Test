@@ -43,6 +43,7 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+import CalendarView from './pages/CalendarView';
 
 setupIonicReact();
 
@@ -53,6 +54,7 @@ const App: React.FC = () => (
         <Route path="/home" component={Home} />
         <Route path="/todos" component={ToDos} />
         <Route path="/create-todo" component={CreateToDo} />
+        <Route path="/calendar-view" component={CalendarView} />
         <Redirect exact from="/" to="/home" />
       </IonRouterOutlet>
     </IonReactRouter>

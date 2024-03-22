@@ -2,14 +2,14 @@ import { IonCard, IonContent, IonDatetime, IonHeader, IonPage, IonText, IonTitle
 import './Home.css';
 import Header from '../components/Header';
 import Calendar from '../components/Calendar';
-import { CapacitorCookies } from '@capacitor/core';
+import Footer from '../components/Footer';
 
 const Home: React.FC = () => {
   return (
     <IonPage>
       <Header />
-        <IonText><h1>Home Page</h1></IonText>
-      <Calendar />
+      <IonContent><IonText><h1>Home Page</h1></IonText></IonContent>
+      <Footer />
     </IonPage>
   );
 };
