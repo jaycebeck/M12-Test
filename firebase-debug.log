@@ -1,0 +1,74 @@
+[debug] [2024-03-22T21:21:26.299Z] ----------------------------------------------------------------------
+[debug] [2024-03-22T21:21:26.301Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\jayce\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2024-03-22T21:21:26.301Z] CLI Version:   13.1.0
+[debug] [2024-03-22T21:21:26.301Z] Platform:      win32
+[debug] [2024-03-22T21:21:26.302Z] Node Version:  v20.11.0
+[debug] [2024-03-22T21:21:26.302Z] Time:          Fri Mar 22 2024 15:21:26 GMT-0600 (Mountain Daylight Time)
+[debug] [2024-03-22T21:21:26.302Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-03-22T21:21:26.415Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-03-22T21:21:26.416Z] > authorizing via signed-in user (jaycehold@gmail.com)
+[debug] [2024-03-22T21:21:26.416Z] [iam] checking project m12-calendar for permissions ["firebase.projects.get"]
+[debug] [2024-03-22T21:21:26.418Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/m12-calendar:testIamPermissions [none]
+[debug] [2024-03-22T21:21:26.418Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/m12-calendar:testIamPermissions x-goog-quota-user=projects/m12-calendar
+[debug] [2024-03-22T21:21:26.418Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/m12-calendar:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-03-22T21:21:26.528Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/m12-calendar:testIamPermissions 200
+[debug] [2024-03-22T21:21:26.528Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/m12-calendar:testIamPermissions {"permissions":["firebase.projects.get"]}
+[debug] [2024-03-22T21:21:26.528Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar [none]
+[debug] [2024-03-22T21:21:26.669Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar 200
+[debug] [2024-03-22T21:21:26.669Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar {"projectId":"m12-calendar","projectNumber":"448683599098","displayName":"M12-Calendar","name":"projects/m12-calendar","resources":{"hostingSite":"m12-calendar"},"state":"ACTIVE","etag":"1_1e7063d7-1779-4ecc-a104-7c9472a75dd6"}
+[info] 
+[info] === Serving from 'C:\Users\jayce\Desktop\Classes\CSCI322\ReactM12\calendar-app-m12'...
+[info] 
+[debug] [2024-03-22T21:21:26.675Z] defaultcredentials: writing to file C:\Users\jayce\AppData\Roaming\firebase\jaycehold_gmail_com_application_default_credentials.json
+[debug] [2024-03-22T21:21:26.676Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/m12-calendar/sites 
+[debug] [2024-03-22T21:21:26.679Z] Setting GAC to C:\Users\jayce\AppData\Roaming\firebase\jaycehold_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\jayce\\AppData\\Roaming\\firebase\\jaycehold_gmail_com_application_default_credentials.json"}}
+[debug] [2024-03-22T21:21:26.679Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar/adminSdkConfig [none]
+[debug] [2024-03-22T21:21:26.803Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar/adminSdkConfig 200
+[debug] [2024-03-22T21:21:26.804Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar/adminSdkConfig {"projectId":"m12-calendar","storageBucket":"m12-calendar.appspot.com"}
+[debug] [2024-03-22T21:21:27.531Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/m12-calendar/sites 200
+[debug] [2024-03-22T21:21:27.531Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/m12-calendar/sites {"sites":[{"name":"projects/m12-calendar/sites/m12-calendar","defaultUrl":"https://m12-calendar.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2024-03-22T21:21:27.531Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar/webApps/-/config [none]
+[debug] [2024-03-22T21:21:27.807Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar/webApps/-/config 200
+[debug] [2024-03-22T21:21:27.807Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar/webApps/-/config {"projectId":"m12-calendar","appId":"1:448683599098:web:95bbdc9a66cab27cc51543","storageBucket":"m12-calendar.appspot.com","apiKey":"AIzaSyCGjW8iz4Apsmad0yRGF2JOvsRlcofS7GA","authDomain":"m12-calendar.firebaseapp.com","messagingSenderId":"448683599098"}
+[debug] [2024-03-22T21:21:27.817Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar [none]
+[debug] [2024-03-22T21:21:27.932Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar 200
+[debug] [2024-03-22T21:21:27.933Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/m12-calendar {"projectId":"m12-calendar","projectNumber":"448683599098","displayName":"M12-Calendar","name":"projects/m12-calendar","resources":{"hostingSite":"m12-calendar"},"state":"ACTIVE","etag":"1_1e7063d7-1779-4ecc-a104-7c9472a75dd6"}
+[info] i  functions: Watching "C:\Users\jayce\Desktop\Classes\CSCI322\ReactM12\calendar-app-m12\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\jayce\\Desktop\\Classes\\CSCI322\\ReactM12\\calendar-app-m12\\functions\" for Cloud Functions..."}}
+[info] i  hosting[m12-calendar]: Serving hosting files from: dist {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mdist\u001b[22m"}}
+[info] +  hosting[m12-calendar]: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}
+[debug] [2024-03-22T21:21:27.954Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[debug] [2024-03-22T21:21:29.075Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "firebase-admin": "^11.8.0",
+    "firebase-functions": "^4.3.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.0",
+    "firebase-functions-test": "^3.1.0"
+  },
+  "private": true
+}
+[debug] [2024-03-22T21:21:29.075Z] Building nodejs source
+[debug] [2024-03-22T21:21:29.075Z] Failed to find version of module node: reached end of search path C:\Users\jayce\Desktop\Classes\CSCI322\ReactM12\calendar-app-m12\functions\node_modules
+[warn] !  functions: Your requested "node" version "18" doesn't match your global version "20". Using node@20 from host. 
+[debug] [2024-03-22T21:21:29.077Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-03-22T21:21:29.082Z] Found firebase-functions binary at 'C:\Users\jayce\Desktop\Classes\CSCI322\ReactM12\calendar-app-m12\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8705
+
+[debug] [2024-03-22T21:21:29.419Z] Got response from /__/functions.yaml {"endpoints":{"helloWorld":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"helloWorld"}},"specVersion":"v1alpha1","requiredAPIs":[]}
