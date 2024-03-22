@@ -9,7 +9,7 @@ import CreateToDo from "./CreateToDo";
 
 function ToDos() {
 
-  const posts: Post[] = [
+  const posts: { id: string, title: string, description: string }[] = [
     {
       id: '1',
       title: 'Cruises are sailing again',
