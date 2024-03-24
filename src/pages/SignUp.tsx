@@ -35,7 +35,7 @@ const SignUp: React.FC = () => {
     return (
         <>
             <IonHeader>
-                <IonTitle><h1>Sign Up</h1></IonTitle>
+            <IonTitle><h1>Sign Up</h1></IonTitle>
             </IonHeader>
             <IonInput className='input' fill='solid' type="text" value={username} onIonChange={(e) => setUsername(e.detail.value!)} placeholder="Username" />
             <IonInput className='input' fill='solid' type="email" value={email} onIonChange={(e) => setEmail(e.detail.value!)} placeholder="Email" />
