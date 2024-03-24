@@ -1,6 +1,9 @@
 import React from 'react';
 import { IonButton, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/react';
-import { homeOutline, logOutOutline } from 'ionicons/icons';
+import { homeOutline, logInOutline, logOutOutline } from 'ionicons/icons';
+import SignOutButton from './SignoutButton';
+import { auth } from '../firebaseConfig';
+import LoginButton from './LoginButton';
 
 function Header() {
     return (
@@ -8,12 +11,10 @@ function Header() {
             <IonHeader>
                 <IonToolbar>
                     <IonTitle>Calendar-M12</IonTitle>
-                    <IonButton slot='start' fill='clear' href='../'>
+                    <IonButton slot='start' fill='clear' href='/home'>
                         <IonIcon slot="icon-only" icon={homeOutline}></IonIcon>
                     </IonButton>
-                    <IonButton slot="end" fill='clear'>
-                        <IonIcon slot="icon-only" icon={logOutOutline}></IonIcon>
-                    </IonButton>
+                    {auth.currentUser ? <SignOutButton /> : <LoginButton />}
                 </IonToolbar>
             </IonHeader>
         </>

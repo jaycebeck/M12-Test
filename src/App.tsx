@@ -21,9 +21,6 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
-import ToDos from './pages/ToDos';
-import CreateToDo from './pages/CreateToDo';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -43,22 +40,48 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
+
+
+import Home from './pages/Home';
+import ToDos from './pages/ToDos';
+import CreateToDo from './pages/CreateToDo';
 import CalendarView from './pages/CalendarView';
+import SignUp from './pages/SignUp';
+import Login from './pages/Login';
+
+import { auth, firestore } from './firebaseConfig';
+import { useState, useEffect } from 'react';
 
 setupIonicReact();
 
-const App: React.FC = () => (
-  <IonApp>
+const App: React.FC = () => {
+  const [user, setUser] = useState<any>(null); // State to store authenticated user
+
+  useEffect(() => {
+    // Add an authentication state observer
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user); // Set the authenticated user in state
+    });
+
+    return () => {
+      unsubscribe(); // Unsubscribe from the authentication state observer
+    };
+  }, []);
+
+  return (<IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
-        <Route path="/home" component={Home} />
-        <Route path="/todos" component={ToDos} />
-        <Route path="/create-todo" component={CreateToDo} />
-        <Route path="/calendar-view" component={CalendarView} />
-        <Redirect exact from="/" to="/home" />
+        <Route path="/home" render={Home} />
+        <Route path="/todos" render={() => (user ? <ToDos/> : <Login />)} />
+        <Route path="/create-todo" render={() => (user ? <CreateToDo /> : <Login />)} />
+        <Route path="/calendar-view" render={() => (user ? <CalendarView /> : <Login />)}  />
+        <Route path="/signup" component={SignUp} />
+        <Route path="/login" component={Login} />
+        <Redirect exact from="/" to="/login" />
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
-);
+  );
+};
 
 export default App;
