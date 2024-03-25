@@ -17,28 +17,30 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const axios = require('axios');
 
-exports.dailyFirestoreUpdate = functions.pubsub.schedule('every 24 hours').onRun(async () => {
-    const options = {
-      method: 'GET',
-      url: 'https://wordsapiv1.p.rapidapi.com/words/',
-      params: {random: 'true'},
-      headers: {
-        'X-RapidAPI-Key': 'a39db15bb4msh16d62022bc1f74ap1c9dc6jsn153cd06696a6',
-        'X-RapidAPI-Host': 'wordsapiv1.p.rapidapi.com'
-      }
+admin.initializeApp();
+
+exports.dailyFirestoreUpdate = functions.pubsub.schedule('0 8 * * 1').onRun(async () => {
+      const options = {
+        method: 'GET',
+        url: 'https://dad-jokes.p.rapidapi.com/random/joke',
+        headers: {
+          'X-RapidAPI-Key': 'a39db15bb4msh16d62022bc1f74ap1c9dc6jsn153cd06696a6',
+          'X-RapidAPI-Host': 'dad-jokes.p.rapidapi.com'
+        }
     };
 
     try {
         // Make API request
-        const response = await axios.request(options);
+        const response =  await axios.request(options);
 
         // Process the response
-        const data = response.data;
+        const data = await response.data //as { setup: string, punchline: string };
 
         const firestore = admin.firestore();
-        const collectionRef = firestore.collection('WOD');
-
-        collectionRef.add(data);
+        const docRef = firestore.collection('Joke').doc('4wD5zXUlcfMYPjNP0G5h');
+        
+        // Set the data for the new document using the generated document reference
+        await docRef.update(data);
 
         console.log('Data updated in Firestore.');
         console.log('Data:', JSON.stringify(data));

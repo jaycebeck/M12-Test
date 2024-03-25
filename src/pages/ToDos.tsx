@@ -4,12 +4,11 @@ import './ToDos.css';
 import AddToDoButton from '../components/AddToDo';
 import { add, trashBinOutline, trashOutline } from "ionicons/icons";
 import Header from "../components/Header";
-import CreateToDo from "./CreateToDo";
 import Footer from "../components/Footer";
 
 
 import { useEffect, useState } from 'react';
-import { auth, firestore } from '../firebaseConfig'; // Import your firebase configuration
+import { auth, firestore } from '../firebaseConfig';
 
 function ToDos() {
 
@@ -17,7 +16,7 @@ function ToDos() {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const postsRef = firestore.collection('Users').doc(auth.currentUser?.uid).collection('posts'); // Change 'posts' to your collection name
+      const postsRef = firestore.collection('Users').doc(auth.currentUser?.uid).collection('posts');
       const snapshot = await postsRef.get();
       const postsData = snapshot.docs.map(doc => ({
         id: doc.id,
@@ -39,7 +38,6 @@ function ToDos() {
   };
 
   const editPost = (postId: string) => {
-    // Add your edit functionality here, such as opening a modal or navigating to an edit page
     console.log('Editing post with ID:', postId);
   };
 

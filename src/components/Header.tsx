@@ -8,9 +8,9 @@ import LoginButton from './LoginButton';
 function Header() {
     return (
         <>
-            <IonHeader>
+            <IonHeader color='standard'>
                 <IonToolbar>
-                    <IonTitle>Calendar-M12</IonTitle>
+                    <IonTitle color='standard'>Calendar-M12</IonTitle>
                     <IonButton slot='start' fill='clear' href='/home'>
                         <IonIcon slot="icon-only" icon={homeOutline}></IonIcon>
                     </IonButton>
