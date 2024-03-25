@@ -80,8 +80,8 @@ const App: React.FC = () => {
 
   return (<IonApp>
     <IonReactRouter>
-      <IonRouterOutlet>
-        <Route path="/home" render={Home} />
+      <IonRouterOutlet onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined}>
+        <Route path="/home" render={() => (user ? <Home /> : <Login />)} />
         <Route path="/todos" render={() => (user ? <ToDos /> : <Login />)} />
         <Route path="/create-todo" render={() => (user ? <CreateToDo /> : <Login />)} />
         <Route path="/calendar-view" render={() => (user ? <CalendarView /> : <Login />)} />

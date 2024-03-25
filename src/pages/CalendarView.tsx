@@ -1,4 +1,4 @@
-import { IonDatetime, IonPage } from '@ionic/react';
+import { IonDatetime, IonItem, IonList, IonPage, IonText } from '@ionic/react';
 import './Home.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -8,7 +8,7 @@ import { firestore, auth } from '../firebaseConfig';
 
 const CalendarView: React.FC = () => {
 
-    const [dates, setDates] = useState<{ date_to_do: string, due_date: string }[]>([]);
+    const [totalDates, setTotalDates] = useState<{ date_to_do: string, due_date: string }[]>([]);
 
     useEffect(() => {
         const fetchDates = async () => {
@@ -18,7 +18,7 @@ const CalendarView: React.FC = () => {
                 date_to_do: doc.data().date_to_do,
                 due_date: doc.data().due_date
             }));
-            setDates(datesData);
+            setTotalDates(datesData);
         };
 
         fetchDates();
@@ -26,16 +26,12 @@ const CalendarView: React.FC = () => {
 
     const fixDateFormat = (date: string) => {
         const dateObj = new Date(date);
-        const month = dateObj.getMonth().toString();
-        const day = dateObj.getDate().toString();
-        const year = dateObj.getFullYear().toString();
-        const full = year + '-' + month + '-' + day;
-        return full;
-    }
+        return dateObj.toISOString().split('T')[0];
+    };
 
-    const formatData = (dates: { date_to_do: string, due_date: string }[]) => {
+    const formatData = (dates_: { date_to_do: string, due_date: string }[]) => {
         const formattedDates: { date: string, textColor: string, backgroundColor: string }[] = [];
-        dates.forEach(date => {
+        dates_.forEach(date => {
             formattedDates.push({
                 date: fixDateFormat(date.date_to_do),
                 textColor: '#800080',
@@ -50,15 +46,18 @@ const CalendarView: React.FC = () => {
         return formattedDates;
     };
 
-    const formattedDates1 = formatData(dates);
+    const formattedDates1 = formatData(totalDates);
     console.log(formattedDates1);
 
     return (
         <IonPage>
             <Header />
-            <IonDatetime highlightedDates={formatData(dates)} className='ion-margin' presentation='date' color={'primary'} readonly={true} />
+            <IonList>
+                <IonDatetime highlightedDates={formattedDates1} className="center" presentation='date' color={'primary'} readonly={true} />
+                <IonText class='ion-text-center' color={'warning'}><h3>Todo Dates</h3></IonText>
+                <IonText class='ion-text-center' color={'danger'}><h3>Due Dates</h3></IonText></IonList>
             <Footer />
-        </IonPage>
+        </IonPage >
     );
 };
 

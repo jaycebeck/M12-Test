@@ -30,7 +30,7 @@
     "react-dom": "^18.2.0",
     "react-router": "^5.3.4",
     "react-router-dom": "^5.3.4",
-    "require": "^2.4.20",
+    "require": "^0.4.4",
     "swiper": "^11.0.7",
     "word-list-json": "^0.2.0"
   },
