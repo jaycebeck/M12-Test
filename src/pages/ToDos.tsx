@@ -2,15 +2,48 @@ import { IonPage, IonCard, IonCardTitle, IonCardContent, IonCardHeader, IonCardS
 import './ToDos.css';
 
 import AddToDoButton from '../components/AddToDo';
-import { add } from "ionicons/icons";
+import { add, trashBinOutline, trashOutline } from "ionicons/icons";
 import Header from "../components/Header";
 import CreateToDo from "./CreateToDo";
 import Footer from "../components/Footer";
 
 
+import { useEffect, useState } from 'react';
+import { auth, firestore } from '../firebaseConfig'; // Import your firebase configuration
+
 function ToDos() {
 
-  const posts: { id: number, title: string, description: string, date_to_do: string, due_date: string }[] = [
+  const [posts, setPosts] = useState<{ id: string, title: string, description: string, date_to_do: string, due_date: string }[]>([]);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const postsRef = firestore.collection('Users').doc(auth.currentUser?.uid).collection('posts'); // Change 'posts' to your collection name
+      const snapshot = await postsRef.get();
+      const postsData = snapshot.docs.map(doc => ({
+        id: doc.id,
+        title: doc.data().title,
+        description: doc.data().description,
+        date_to_do: doc.data().date_to_do,
+        due_date: doc.data().due_date
+      }));
+      setPosts(postsData);
+    };
+
+    fetchPosts();
+  }, []);
+
+  // Function to delete a post
+  const deletePost = async (postId: string) => {
+    await firestore.collection('Users').doc(auth.currentUser?.uid).collection('posts').doc(postId).delete();
+    setPosts(posts.filter(post => post.id !== postId));
+  };
+
+  const editPost = (postId: string) => {
+    // Add your edit functionality here, such as opening a modal or navigating to an edit page
+    console.log('Editing post with ID:', postId);
+  };
+
+  const posts1: { id: number, title: string, description: string, date_to_do: string, due_date: string }[] = [
     {
       id: 1,
       title: "English Essay",
@@ -91,23 +124,28 @@ function ToDos() {
   return (
     <IonPage>
       <Header />
-      <IonList className="list-margin">
-        {posts.map((post) => (
-          <IonItem
-            key={'card-' + post.id}
-            lines="none"
-          >
-            <IonCard className="card">
-              <IonCardHeader><IonText><h2>{post.title}</h2></IonText></IonCardHeader>
-              <IonCardContent>{post.description}</IonCardContent>
-              <IonToolbar>
-                <IonText class="ion-padding">Due Date: {formatDate(post.due_date)}</IonText>
-                <IonButtons slot="end"><IonButton>Edit</IonButton></IonButtons>
-              </IonToolbar>
-            </IonCard>
-          </IonItem>
-        ))}
-      </IonList>
+      <IonContent>
+        <IonList className="list-margin">
+          {posts.map((post) => (
+            <IonItem
+              key={'card-' + post.id}
+              lines="none"
+            >
+              <IonCard className="card">
+                <IonCardHeader><IonText><h2>{post.title}</h2></IonText></IonCardHeader>
+                <IonCardContent>{post.description}</IonCardContent>
+                <IonToolbar>
+                  <IonText class="ion-padding">Due Date: {formatDate(post.due_date)}</IonText>
+                  <IonButtons slot="end">
+                    <IonButton onClick={() => { editPost(post.id) }}>Edit</IonButton>
+                    <IonButton onClick={() => { deletePost(post.id) }}><IonIcon size="small" slot="icon-only" icon={trashOutline}></IonIcon></IonButton>
+                  </IonButtons>
+                </IonToolbar>
+              </IonCard>
+            </IonItem>
+          ))}
+        </IonList>
+      </IonContent>
       <AddToDoButton />
       <Footer />
     </IonPage>

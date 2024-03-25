@@ -8,6 +8,7 @@ import {
   IonHeader,
   IonIcon,
   IonLabel,
+  IonLoading,
   IonMenu,
   IonMenuButton,
   IonPage,
@@ -55,26 +56,35 @@ import { useState, useEffect } from 'react';
 setupIonicReact();
 
 const App: React.FC = () => {
-  const [user, setUser] = useState<any>(null); // State to store authenticated user
+  const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Add an authentication state observer
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setUser(user); // Set the authenticated user in state
+      setUser(user);
+      setLoading(false);
     });
 
     return () => {
-      unsubscribe(); // Unsubscribe from the authentication state observer
+      unsubscribe();
     };
   }, []);
+
+  if (loading) {
+    return (
+      <IonPage>
+        <IonLoading isOpen={loading} spinner="dots" />
+      </IonPage>
+    );
+  }
 
   return (<IonApp>
     <IonReactRouter>
       <IonRouterOutlet>
         <Route path="/home" render={Home} />
-        <Route path="/todos" render={() => (user ? <ToDos/> : <Login />)} />
+        <Route path="/todos" render={() => (user ? <ToDos /> : <Login />)} />
         <Route path="/create-todo" render={() => (user ? <CreateToDo /> : <Login />)} />
-        <Route path="/calendar-view" render={() => (user ? <CalendarView /> : <Login />)}  />
+        <Route path="/calendar-view" render={() => (user ? <CalendarView /> : <Login />)} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Redirect exact from="/" to="/login" />
