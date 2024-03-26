@@ -16,7 +16,7 @@ const Home: React.FC = () => {
         });
 
         return () => {
-            unsubscribe(); // Unsubscribe from the snapshot listener when component unmounts
+            unsubscribe();
         };
     }, []);
 

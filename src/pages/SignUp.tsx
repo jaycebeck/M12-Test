@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { auth, firestore } from '../firebaseConfig'; // Import the initialized Firebase auth
-import { IonInput, IonButton, IonTitle, IonContent, IonItemGroup, IonHeader, IonText } from '@ionic/react';
+import { auth, firestore } from '../firebaseConfig'; 
+import { IonInput, IonButton, IonTitle, IonHeader, IonText } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 import './SignUpIn.css';
 

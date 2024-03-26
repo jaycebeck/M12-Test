@@ -31,7 +31,6 @@ const MyForm: React.FC = () => {
     };
 
     const handleSubmit = () => {
-        // Handle form submission here
         console.log('Selected Todo Date:', selectedTodoDate)
         console.log('Selected Due Date:', selectedDueDate);
         console.log('Title:', title);

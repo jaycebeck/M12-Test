@@ -4,9 +4,6 @@ import { add } from 'ionicons/icons';
 import CreateToDo from '../pages/CreateToDo';
 
 function AddToDoButton() {
-    const addToDo = () => {
-        return <CreateToDo />;
-    };
     return (
         <IonFab slot='fixed' vertical="bottom" horizontal="end">
         <IonRouterLink href="../create-todo">

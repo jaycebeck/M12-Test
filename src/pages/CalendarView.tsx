@@ -12,7 +12,7 @@ const CalendarView: React.FC = () => {
 
     useEffect(() => {
         const fetchDates = async () => {
-            const datesRef = firestore.collection('Users').doc(auth.currentUser?.uid).collection('posts'); // Change 'dates' to your collection name
+            const datesRef = firestore.collection('Users').doc(auth.currentUser?.uid).collection('posts');
             const snapshot = await datesRef.get();
             const datesData = snapshot.docs.map(doc => ({
                 date_to_do: doc.data().date_to_do,

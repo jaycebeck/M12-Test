@@ -1,5 +1,5 @@
 import { logOutOutline } from 'ionicons/icons';
-import { auth } from '../firebaseConfig'; // Import the initialized Firebase auth
+import { auth } from '../firebaseConfig';
 import { IonButton, IonIcon } from '@ionic/react';
 import { useHistory } from 'react-router-dom';
 

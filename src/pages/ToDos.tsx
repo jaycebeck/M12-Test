@@ -1,11 +1,10 @@
-import { IonPage, IonCard, IonCardTitle, IonCardContent, IonCardHeader, IonCardSubtitle, IonButton, IonText, IonList, IonContent, IonItem, IonFab, IonFabButton, IonIcon, IonToolbar, IonButtons, IonRouterLink, IonDatetime } from "@ionic/react";
+import { IonPage, IonCard, IonCardContent, IonCardHeader, IonButton, IonText, IonList, IonContent, IonItem, IonIcon, IonToolbar, IonButtons } from "@ionic/react";
 import './ToDos.css';
 
 import AddToDoButton from '../components/AddToDo';
-import { add, trashBinOutline, trashOutline } from "ionicons/icons";
+import { trashOutline } from "ionicons/icons";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-
 
 import { useEffect, useState } from 'react';
 import { auth, firestore } from '../firebaseConfig';
@@ -37,10 +36,12 @@ function ToDos() {
     setPosts(posts.filter(post => post.id !== postId));
   };
 
+  // FIXME: Function to edit a post
   const editPost = (postId: string) => {
     console.log('Editing post with ID:', postId);
   };
 
+  // Testing data to try out the UI
   const posts1: { id: number, title: string, description: string, date_to_do: string, due_date: string }[] = [
     {
       id: 1,

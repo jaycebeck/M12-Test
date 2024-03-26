@@ -1,6 +1,5 @@
-import React from 'react';
 import { IonButton, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/react';
-import { homeOutline, logInOutline, logOutOutline } from 'ionicons/icons';
+import { homeOutline} from 'ionicons/icons';
 import SignOutButton from './SignoutButton';
 import { auth } from '../firebaseConfig';
 import LoginButton from './LoginButton';
