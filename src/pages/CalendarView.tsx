@@ -1,5 +1,4 @@
-import { IonDatetime, IonItem, IonList, IonPage, IonText } from '@ionic/react';
-import './Home.css';
+import { IonDatetime, IonList, IonPage, IonText } from '@ionic/react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import './CalendarView.css'
